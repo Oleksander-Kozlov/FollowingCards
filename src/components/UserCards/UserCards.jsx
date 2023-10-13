@@ -2,16 +2,16 @@
 import {
     Avatar,
   AvatarWrapper,
-  BorderAvatar,
+
   CardWrapper,
   FollowBox,
-  FollowButton,
+//   FollowButton,
   MidleLine,
   Tweets,
   Ul,
-  UserName,
+
 } from './UserCards.styled.js';
-import avatar_1x from '../../assets/img/avatar@1x.png';
+// import avatar_1x from '../../assets/img/avatar@1x.png';
 import { useEffect } from 'react';
 import { fetchUsersCards } from 'components/API/Api.js';
 import { useState } from 'react';
@@ -24,7 +24,7 @@ const UserCards = () => {
     
     
 
-console.log(data);
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetchUsersCards(page);
@@ -37,8 +37,7 @@ console.log(data);
       console.log('newData', newData);
     };
     fetchData();
-    
-  }, [page, ]);
+  }, [page]);
     
     const handleLoadMore = () => {
         setPage(page + 1);

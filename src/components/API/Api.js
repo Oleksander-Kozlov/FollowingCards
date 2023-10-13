@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 axios.defaults.baseURL = 'https://6529741c55b137ddc83edaeb.mockapi.io/';
 
 export async function fetchUsersCards(page) {

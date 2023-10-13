@@ -1,9 +1,9 @@
 import { addToFollow } from 'components/API/Api';
 import { FollowButton } from 'components/UserCards/UserCards.styled';
-import { useLayoutEffect } from 'react';
-import { useState, useEffect } from 'react';
+
+import { useState } from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 // import { selectFavoriteDrinks } from '../../redux/auth/authSelectors';
 // import {
 //   addFavoriteDrink,
