@@ -27,17 +27,18 @@ const UserCards = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetchUsersCards(page);
-      //   console.log('result', result);
-      // const data = [...result]
-      // console.log('newData', newData);
-      const newData = [...data, ...result];
-
-      setData(newData);
-      console.log('newData', newData);
+      try {
+        const result = await fetchUsersCards(page);
+        const newData = [...data, ...result];
+        setData(newData);
+        console.log('newData', newData);
+      } catch (error) {
+        // Обробка помилок, якщо необхідно
+        console.error('Error fetching user cards:', error);
+      }
     };
     fetchData();
-  }, [page]);
+  }, [page, data]);
     
     const handleLoadMore = () => {
         setPage(page + 1);
