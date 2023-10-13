@@ -1,16 +1,16 @@
+import { Container } from "./GlobalStyled/container.styled.js";
+import { GlobalStyle } from "./GlobalStyled/global.styled.js";
+import UserCards from "./UserCards/UserCards.jsx"
 export const App = () => {
+  
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <GlobalStyle />
+      <section>
+        <Container>
+          <UserCards></UserCards>
+        </Container>
+      </section>
+    </>
   );
 };
