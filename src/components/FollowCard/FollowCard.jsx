@@ -6,9 +6,7 @@ const { AvatarWrapper, Avatar, MidleLine, FollowBox, Tweets } = require("compone
 
 export const FollowCard = ({ item }) => {
   const { avatar, id, user, tweets, isFollow, followers } = item;
-  console.log('avatar', avatar); 
-  // const followers = useSelector(selectFollowers);
-  // console.log("followers", followers);
+ 
   let formattedFollowers = followers.toLocaleString('en-US');
     return (
       <>

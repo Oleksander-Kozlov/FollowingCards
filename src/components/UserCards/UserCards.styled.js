@@ -4,11 +4,13 @@ import bgImg2x from "../../assets/img/imgBg@2x.png"
 import logo1x from '../../assets/img/logo@1x.png';
 import logo2x from '../../assets/img/logo@2x.png';
 import BorderImg from '../../assets/svg/BorderImg.jsx';
+import { Link } from "react-router-dom";
 
 export const Ul = styled.ul`
   display: flex;
   flex-wrap: wrap;
-
+  align-items: center;
+  justify-content: center;
   gap: 20px;
 `;
 export const CardWrapper = styled.li`
@@ -109,7 +111,7 @@ export const FollowButton = styled.button`
   align-items: center;
   /* gap: 6px; */
   border-radius: 10.311px;
-  background: #ebd8ff;
+  background-color: ${props => props.color || '#ebd8ff'};
   box-shadow: 0px 3.43693px 3.43693px 0px rgba(0, 0, 0, 0.25);
   color: var(--landing-button-text-color, #373737);
   font-family: Montserrat;
@@ -118,9 +120,11 @@ export const FollowButton = styled.button`
   font-weight: 600;
   line-height: normal;
   text-transform: uppercase;
-  &:hover{
+  &:hover {
     background-color: yellow;
-    
   }
 `;
-
+export const NavLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;

@@ -67,6 +67,13 @@ body {
 
 section {
   padding:  100px 0;
+  
+          display: flex;
+          flex-direction: column;
+          justify-Content: center;
+          align-Items: center;
+          gap: 30px;
+       
 }
 h1,
 h2,
@@ -100,4 +107,6 @@ button {
   font-size: 14px;
   color: red;
 }
+
+
 `;

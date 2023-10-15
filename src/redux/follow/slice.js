@@ -12,13 +12,7 @@ const initialState = {
   // isUpdating: false,
   error: null,
 };
-const handlePending = state => {
-  state.isLoading = true;
-};
-const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
+
 const followSlice = createSlice({
   name: 'follow',
   initialState,
@@ -29,8 +23,7 @@ const followSlice = createSlice({
     },
     [fetchUsersCards.fulfilled](state, action) {
       state.cards.push(...action.payload);
-      // ({ ...state.users, ...action.payload });
-      // console.log('action.payload', action.payload);
+     
       state.isLoading = false;
     },
     [fetchUsersCards.rejected](state, action) {
