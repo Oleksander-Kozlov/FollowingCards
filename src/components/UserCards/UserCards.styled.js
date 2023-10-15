@@ -6,10 +6,14 @@ import logo2x from '../../assets/img/logo@2x.png';
 import BorderImg from '../../assets/svg/BorderImg.jsx';
 
 export const Ul = styled.ul`
-display:flex;
-flex-direction:column;
-gap: 20px;`
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 20px;
+`;
 export const CardWrapper = styled.li`
+
+  
   position: relative;
   z-index: 10;
   padding-top: 175px;
@@ -28,7 +32,6 @@ export const CardWrapper = styled.li`
   flex-shrink: 0;
   background-repeat: no-repeat;
 
- 
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     background-image: url(${logo2x}), url(${bgImg2x}),
       linear-gradient(115deg, #471ca9 -0.99%, #5736a3 54.28%, #4b2a99 78.99%);
@@ -40,10 +43,10 @@ export const CardWrapper = styled.li`
   }
 `;
 export const AvatarWrapper = styled.div`
-  
- margin-left: auto;
- margin-right: auto;
- position: relative;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
   border: 8px solid rgba(235, 216, 255, 1);
   border-radius: 50%;
   width: 90px;

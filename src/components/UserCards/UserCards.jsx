@@ -1,84 +1,59 @@
 
 import {
-    Avatar,
-  AvatarWrapper,
-
   CardWrapper,
-  FollowBox,
-//   FollowButton,
-  MidleLine,
-  Tweets,
   Ul,
 
 } from './UserCards.styled.js';
 // import avatar_1x from '../../assets/img/avatar@1x.png';
 import { useEffect } from 'react';
-import { fetchUsersCards } from 'components/API/Api.js';
+// import { fetchUsersCards } from 'components/API/Api.js';
 import { useState } from 'react';
-import { ButtonAddRemove } from 'components/FollowButton/FollowButton.jsx';
+// import { ButtonAddRemove } from 'components/FollowButton/FollowButton.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUsersCards } from 'redux/follow/operations.js';
+import { selectUsers } from 'redux/follow/selector.js';
+import { FollowCard } from 'components/FollowCard/FollowCard.jsx';
 
 
 const UserCards = () => {
-  const [data, setData] = useState([]);
-    const [page, setPage] = useState(1);
-    
-    
+  const [page, setPage] = useState(1);
 
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await fetchUsersCards(page);
-        const newData = [...data, ...result];
-        setData(newData);
-        console.log('newData', newData);
-      } catch (error) {
-        // Обробка помилок, якщо необхідно
-        console.error('Error fetching user cards:', error);
-      }
-    };
-    fetchData();
-  }, [page, data]);
-    
-    const handleLoadMore = () => {
-        setPage(page + 1);
-        
-    }
-    return (
-      <>
-        <Ul>
-          {data.map(({ avatar, tweets, followers, id, user, isFollow }) => (
-            <CardWrapper key={id}>
-              <AvatarWrapper>
-                <Avatar
-                  src={avatar}
-                  alt={user}
-                  id={id}
-                  width={'80px'}
-                  height={'80px'}
-                />
-              </AvatarWrapper>
-              <MidleLine></MidleLine>
-              <FollowBox>
-                {/* <Tweets>Name</Tweets> */}
-                <Tweets>{tweets} tweets</Tweets>
-                <Tweets>{followers} Followers</Tweets>
-                {/* <FollowButton id={id}>Follow</FollowButton> */}
-                <ButtonAddRemove
-                  id={id}
-                  isFollow={isFollow}
-                  followers={followers}
-                >
-                  ffff
-                </ButtonAddRemove>
-              </FollowBox>
-            </CardWrapper>
-          ))}
-        </Ul>
-        <button type="button" onClick={handleLoadMore}>
-          Load More
-        </button>
-      </>
-    );
+    dispatch(fetchUsersCards(page));
+    // const fetchData = async () => {
+    //   try {
+    //     const result = await fetchUsersCards(page);
+    //     const newData = [...data, ...result];
+    //     setData(newData);
+    //     console.log('newData', newData);
+    //   } catch (error) {
+    //     // Обробка помилок, якщо необхідно
+    //     console.error('Error fetching user cards:', error);
+    //   }
+    // };
+    // fetchData();
+  }, [dispatch, page]);
+
+  const handleLoadMore = () => {
+    setPage(page + 1);
+  };
+  const data = useSelector(selectUsers);
+ data.map(item => (console.log(item)));
+  return (
+    <>
+      <Ul>
+        {data.map(item => (
+          <CardWrapper key={item.id} >
+            <FollowCard item={item} />
+          </CardWrapper>
+        ))}
+      </Ul>
+      <button type="button" onClick={handleLoadMore}>
+        Load More
+      </button>
+    </>
+  );
 };
- export default  UserCards
+export default UserCards;

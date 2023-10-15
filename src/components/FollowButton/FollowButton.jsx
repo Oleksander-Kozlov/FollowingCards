@@ -1,7 +1,10 @@
-import { addToFollow } from 'components/API/Api';
+
 import { FollowButton } from 'components/UserCards/UserCards.styled';
 
-import { useState } from 'react';
+// import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToFollow } from 'redux/follow/operations';
+import { selectCardsById } from 'redux/follow/selector';
 // import { useSelector, useDispatch } from 'react-redux';
 // import toast from 'react-hot-toast';
 // import { selectFavoriteDrinks } from '../../redux/auth/authSelectors';
@@ -12,25 +15,28 @@ import { useState } from 'react';
 // import { Button } from './RecipeButton.styled';
 
 export const ButtonAddRemove = ({ id, isFollow, followers }) => {
-  const [areYouFollow, setAreYouFollow] = useState(isFollow);
+  // const [areYouFollow, setAreYouFollow] = useState(isFollow);
   console.log('ID', id);
-
+  const dispatch = useDispatch();
   const handleFollow = async () => {
-      const follow = !areYouFollow;
-    const counter =  follow ? followers + 1 : followers - 1;
-    const result = await addToFollow(id, follow, counter);
-    console.log('result', result);
+     
+      // const follow = !areYouFollow;
+    // const counter = !isFollow ? followers + 1 : followers - 1;
+    const obj = { id, isFollow, followers };
+    dispatch(addToFollow(obj));
+    // const result = await addToFollow(id, follow, counter);
+    // console.log('result', result);
 
-    setAreYouFollow(result.isFollow);
+    // setAreYouFollow(result.isFollow);
     // const data = [...result]
     // console.log('newData', newData);
   };
-
-  //
+  
+ 
 
   return (
     <>
-      {!areYouFollow ? (
+      {!isFollow ? (
         <>
           <FollowButton
             type="button"
@@ -44,7 +50,11 @@ export const ButtonAddRemove = ({ id, isFollow, followers }) => {
         </>
       ) : (
         <>
-          <FollowButton type="button" onClick={() => handleFollow()}>
+          <FollowButton
+            type="button"
+            onClick={() => handleFollow()}
+            style={{ background: '#5CD3A8' }}
+          >
             FOLLOWING
           </FollowButton>
         </>
