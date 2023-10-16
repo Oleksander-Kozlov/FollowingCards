@@ -1,4 +1,4 @@
-import { CardWrapper, FollowButton, Ul } from './UserCards.styled.js';
+import { CardWrapper, FollowButton, LinkSelectWrapper, Ul } from './UserCards.styled.js';
 
 import { useEffect } from 'react';
 
@@ -11,6 +11,7 @@ import { FollowCard } from 'components/FollowCard/FollowCard.jsx';
 import DropDownMenu from 'components/DropDownMenu/DropDownMenu.jsx';
 import { Container } from 'components/GlobalStyled/container.styled.js';
 import { Loader } from 'components/Loader/Loader.jsx';
+import { BackLink } from 'components/BackLink.jsx';
 
 
 const UserCards = () => {
@@ -47,8 +48,10 @@ const UserCards = () => {
         <Loader />
       ) : (
         <Container>
-         
-          <DropDownMenu filter={filteredData} />
+          <LinkSelectWrapper>
+            <BackLink to={"/"}>Go Back</BackLink>
+            <DropDownMenu filter={filteredData} />
+          </LinkSelectWrapper>
           <Ul>
             {newData.map(item => (
               <CardWrapper key={item.id}>

@@ -1,3 +1,4 @@
+
 import {
   HeaderContainer,
   Navigation,
@@ -9,24 +10,10 @@ import {
 ;
 
 export const Header = () => {
-  // const [isOpenBurgerMenu, setisOpenBurgerMenu] = useState(false);
-
-  // const location = useLocation();
-
-  // const toggleMenu = () => setisOpenBurgerMenu(!isOpenBurgerMenu);
-
-  // if (isOpenBurgerMenu) {
-  //   document.body.style.overflow = 'hidden';
-  // } else {
-  //   document.body.style.overflow = '';
-  // }
-
-  // useEffect(() => {
-  //   setisOpenBurgerMenu(false);
-  // }, [location.pathname]);
 
   return (
     <Head>
+      
       <HeaderContainer>
         <h2>Tweets List</h2>
 

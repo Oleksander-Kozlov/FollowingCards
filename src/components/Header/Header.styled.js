@@ -48,10 +48,10 @@ export const Navigation = styled.nav`
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-
-  @media screen and (min-width: 1280px) {
-    display: flex;
   
+
+  @media screen and (min-width: 768px) {
+    display: flex;
   }
 `;
 

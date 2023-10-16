@@ -5,13 +5,7 @@ import { HomePageWrapper } from "./HomePage.styled";
 export const HomePage = () => {
     return (
       <HomePageWrapper
-        style={{
-          display: 'flex',
-          'flexDirection': 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: '30px',
-        }}
+        
       >
         <h1
           style={{

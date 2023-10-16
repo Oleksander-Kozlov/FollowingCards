@@ -62,6 +62,8 @@ body {
   background-color: var(--bg-color-main-darktheme);
   scroll-behavior: smooth;
 
+    overflow-x: hidden;
+
 
 
 
@@ -70,7 +72,7 @@ body {
 }
 
 section {
-  padding:  100px 0;
+  padding:  20px 0;
   
           display: flex;
           flex-direction: column;

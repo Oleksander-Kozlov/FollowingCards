@@ -1,10 +1,12 @@
+import { BackLink } from "components/BackLink";
 import { Container } from "components/GlobalStyled/container.styled";
 import UserCards from "components/UserCards/UserCards";
 
 export const TweetsPage = () => { 
 
   return (
-    <section>      
+    <section> 
+      
       <Container>    
           <UserCards />
         </Container> 

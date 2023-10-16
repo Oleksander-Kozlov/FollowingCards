@@ -6,7 +6,7 @@ export const Loader = () => {
       visible={true}
       height="380"
       width="380"
-      color="#FF0000"
+      colors={['rgba(87, 54, 163, 0.54)', 'rgb(188, 127, 191)']}
       ariaLabel="comment-loading"
       wrapperStyle={{
         marginTop: '40px',

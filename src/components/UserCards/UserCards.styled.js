@@ -31,9 +31,9 @@ export const CardWrapper = styled.li`
   background-size: 76px 22px, 308px 168px, cover;
   flex-shrink: 0;
   background-repeat: no-repeat;
-  @media (min-width: 425px) {
-    width: 380px;
-  }
+    @media (min-width: 425px) {
+      width: 380px;
+    }
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     background-image: url(${logo2x}), url(${bgImg2x}),
       linear-gradient(115deg, #471ca9 -0.99%, #5736a3 54.28%, #4b2a99 78.99%);
@@ -124,7 +124,22 @@ export const FollowButton = styled.button`
     background-color: yellow;
   }
 `;
+export const LinkSelectWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
 export const NavLink = styled(Link)`
   text-decoration: none;
   color: inherit;
 `;
+
+
+
