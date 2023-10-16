@@ -2,62 +2,92 @@ import { useState } from 'react';
 import Select from 'react-select';
 // import styled from 'styled-components';
 
-const DropDownMenu = ({onChange, optionValue }) => {
-
-
+const DropDownMenu = ({ onChange, flexDirection, filter }) => {
+  const optionValue = [
+    { value: true, label: 'following' },
+    { value: false, label: 'follow' },
+    { value: 'showall', label: 'show All' },
+  ];
   const [isOpen, setIsOpen] = useState(false);
 
   const customStyles = {
-    control: (provided) => ({
+    valueContainer: provided => ({
       ...provided,
-      backgroundColor: 'transparent',
+      // display: 'flex',
+      // flexDirection: 'column',
+      // alignItems: 'center',
+      paddingLeft: 18,
+      background:
+        'linear-gradient(115deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%)',
+      color: '#373737',
+      borderRadius: '20px',
+      placeholderColor: 'red',
+    }),
+    control: provided => ({
+      ...provided,
+      borderRadius: '20px',
+      background:
+        'linear-gradient(115deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%)',
+      boxShadow: '-2.5777px 6.87386px 20.62157px 0px rgba(0, 0, 0, 0.23)',
       border: 0,
       cursor: 'pointer',
-      borderColor: 'blue',
-      boxShadow: 'none',
+      borderColor: 'transparent',
+     
+      color: '#red',
     }),
     option: (provided, { isFocused }) => ({
       ...provided,
-      backgroundColor: '#161F37',
+      background:
+        'linear-gradient(115deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%)',
       borderRadius: 20,
-      color: isFocused ? '#F3F3F3' : '#F3F3F366',
+      color: isFocused ? 'rgba(235, 216, 255, 1)' : 'yellow',
       display: 'flex',
       alignItems: 'flex-start',
     }),
-    menu: (provided) => ({
+    menu: provided => ({
       ...provided,
-      backgroundColor: '#161F37',
+      background:
+        'linear-gradient(115deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%)',
       borderRadius: 20,
     }),
-    singleValue: (provided) => ({
+    singleValue: provided => ({
       ...provided,
-      color: '#F3F3F3',
+      color: 'rgba(235, 216, 255, 1)',
     }),
-    dropdownIndicator: (provided) => ({
+
+    placeholder: provided => ({
+      ...provided,
+      color: 'rgba(235, 216, 255, 1)',
+    }),
+
+    dropdownIndicator: provided => ({
       ...provided,
       cursor: 'pointer',
+      color: 'rgba(235, 216, 255, 1)',
       '&:hover': {
-        color: '#F3F3F3',
+        color: '#yellow',
       },
       transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
     }),
-    indicatorSeparator: (provided) => ({
+    indicatorSeparator: provided => ({
       ...provided,
       display: 'none',
     }),
   };
 
   const selectContainer = {
-    width: "100%",
+    width: '320px',
   };
   return (
     <div style={selectContainer}>
       <Select
         options={optionValue}
-        placeholder=""
-        styles={{ ...customStyles }}
+        placeholder="select type of cards"
         
-        onChange={(selectedOption) => onChange(selectedOption.value)}
+        styles={{ ...customStyles }}
+        onChange={selectedOption => {
+                   filter(selectedOption.value);
+        }}
         onMenuOpen={() => setIsOpen(true)}
         onMenuClose={() => setIsOpen(false)}
       />

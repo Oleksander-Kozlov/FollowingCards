@@ -1,7 +1,11 @@
-// import { Container } from "components/GlobalStyled/container.styled";
+
 import { BackLink } from "components/BackLink";
-import DropDownMenu from "components/DropDownMenu/DropDownMenu";
+import { Loader } from "components/FollowButton/Loader/Loader";
+import { Container } from "components/GlobalStyled/container.styled";
+
 import UserCards from "components/UserCards/UserCards";
+import { useSelector } from "react-redux";
+import { selectIsLoading } from "redux/follow/selector";
 // import { useRef } from "react";
 
 
@@ -9,16 +13,20 @@ import UserCards from "components/UserCards/UserCards";
 
 
 export const TweetsPage = () => {
-    
+  const Loading = useSelector(selectIsLoading);
   return (
     <section>
-      {/* <Container> */}      
-        <BackLink to={"/"}>GO BACK</BackLink>    
+      {!Loading ? (
+        <Container>
+          <BackLink to={'/'}>GO BACK</BackLink>
 
-      <UserCards       
-      />
-      <DropDownMenu />
-      {/* </Container> */}
+          <UserCards
+           
+          />
+        </Container>
+      ) : (
+        <Loader />
+      )}
     </section>
   );
 };

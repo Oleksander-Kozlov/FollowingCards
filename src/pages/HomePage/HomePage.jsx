@@ -7,12 +7,18 @@ export const HomePage = () => {
         style={{
           display: 'flex',
           'flex-direction': 'column',
-          "justifyContent": 'center',
-          "alignItems": 'center',
-          "gap":"30px",
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '30px',
         }}
       >
-        <h1>HomePage</h1>
+        <h1
+          style={{
+            padding: '100px',
+          }}
+        >
+          You welcome 🥳
+        </h1>
         <NavLink to="/tweets">
           <FollowButton>Lets tweets</FollowButton>
         </NavLink>

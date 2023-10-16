@@ -46,8 +46,8 @@ html {
 
 :root {
   --font-main: 'Montserrat', sans-serif;
-  --color-main-darktheme: white;
-  --bg-color-main-darktheme: green;
+  --color-main-darktheme: black;
+  --bg-color-main-darktheme: #5CD3A8;
   --transition-dur-and-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -58,7 +58,7 @@ body {
   font-style: normal;
   font-size: 20px;
   color: var(--color-main-darktheme);
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   /* background-color: var(--background-color); */
   background-color: var(--bg-color-main-darktheme);

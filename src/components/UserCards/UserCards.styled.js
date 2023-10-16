@@ -14,15 +14,13 @@ export const Ul = styled.ul`
   gap: 20px;
 `;
 export const CardWrapper = styled.li`
-
-  
   position: relative;
   z-index: 10;
   padding-top: 175px;
   padding-bottom: 36px;
-  width: 380px;
+  
   height: 460px;
-  outline: 3px solid tomato;
+ 
   border-radius: 20px;
 
   box-shadow: -2.5777px 6.87386px 20.62157px 0px rgba(0, 0, 0, 0.23);
@@ -33,7 +31,9 @@ export const CardWrapper = styled.li`
   background-size: 76px 22px, 308px 168px, cover;
   flex-shrink: 0;
   background-repeat: no-repeat;
-
+  @media (min-width: 425px) {
+    width: 380px;
+  }
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     background-image: url(${logo2x}), url(${bgImg2x}),
       linear-gradient(115deg, #471ca9 -0.99%, #5736a3 54.28%, #4b2a99 78.99%);
@@ -76,7 +76,7 @@ export const MidleLine = styled.div`
 z-index: 1;
 position: absolute;
 top: 214px;   
-  width: 380px;
+  width: 100%;
   height: 8px;
   flex-shrink: 0;
   background: #ebd8ff;

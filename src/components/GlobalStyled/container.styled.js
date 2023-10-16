@@ -4,11 +4,14 @@ export const Container = styled.div`
   position: ${({ position }) => position || 'static'};
   padding-left: 10px;
   padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
 
-  @media (min-width: 375px) {
-    max-width: 375px;
-    margin: 0 auto;
-  }
+   
 
   @media (min-width: 768px) {
     padding-left: 32px;

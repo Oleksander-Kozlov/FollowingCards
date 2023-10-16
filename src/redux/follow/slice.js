@@ -44,6 +44,7 @@ const followSlice = createSlice({
     },
     [addToFollow.rejected](state, action) {
       state.error = action.payload;
+      state.isLoading = false;
     },
   },
 });
