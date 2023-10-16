@@ -6,7 +6,7 @@ export const HomePage = () => {
       <div
         style={{
           display: 'flex',
-          'flex-direction': 'column',
+          'flexDirection': 'column',
           justifyContent: 'center',
           alignItems: 'center',
           gap: '30px',

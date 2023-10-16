@@ -12,10 +12,11 @@ import { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsersCards } from 'redux/follow/operations.js';
-import {  selectUsers } from 'redux/follow/selector.js';
+import {  selectIsLoading, selectUsers } from 'redux/follow/selector.js';
 import { FollowCard } from 'components/FollowCard/FollowCard.jsx';
 import DropDownMenu from 'components/DropDownMenu/DropDownMenu.jsx';
 import { Container } from 'components/GlobalStyled/container.styled.js';
+import { Loader } from 'components/FollowButton/Loader/Loader.jsx';
 
 
 
@@ -25,8 +26,9 @@ const UserCards = () => {
   const [fil, setfil] = useState('showall');
   const dispatch = useDispatch();
   const data = useSelector(selectUsers)
+  const Loading = useSelector(selectIsLoading);
 
-   const filteredData = option => {
+  const filteredData = option => {
     setfil(option);
   }
   let pagination = page * 3;
@@ -49,10 +51,9 @@ const UserCards = () => {
   
     setPage(page + 1);
   };
-  
  
-  return (
-    <Container>
+  return (  <>
+    {Loading ? <Loader /> : (<Container>
       <Ul>
         {newData.map(item => (
           <CardWrapper key={item.id}>
@@ -60,14 +61,14 @@ const UserCards = () => {
           </CardWrapper>
         ))}
       </Ul>
-
       <DropDownMenu filter={filteredData} />
       {superData.length !== 12 && (
-      <FollowButton type="button" onClick={handleLoadMore}>
-        Load More
-      </FollowButton>
+        <FollowButton type="button" onClick={handleLoadMore}>
+          Load More
+        </FollowButton>
       )}
-    </Container>
+      </Container>)}
+        </>
   );
 };
 export default UserCards;

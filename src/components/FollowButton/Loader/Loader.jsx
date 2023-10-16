@@ -1,17 +1,21 @@
 import { Discuss } from 'react-loader-spinner';
 
 export const Loader = () => {
-  return (    <Discuss
+  return (
+    <Discuss
       visible={true}
-      height="80"
-      width="80"
+      height="380"
+      width="380"
+      
       ariaLabel="comment-loading"
       wrapperStyle={{
         marginTop: '40px',
         marginBottom: '40px',
-        justifyContent: 'center',
+        width: "50vw",
+        height:"50vh",
       }}
       wrapperClass="comment-wrapper"
-      color="#3220be"
-      backgroundColor="#F4442E" /> )
+      backgroundColor="#F3F3F3"
+    />
+  );
 }

@@ -1,5 +1,5 @@
 export const selectUsers = (state) => state.users.cards;
-export const selectIsLoading = state => state.isLoading;
+export const selectIsLoading = state => state.users.isLoading;
 
 
 // export const selectCardsById = (state, cardId) =>
