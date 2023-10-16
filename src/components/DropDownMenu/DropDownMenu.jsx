@@ -22,6 +22,7 @@ const DropDownMenu = ({ onChange, flexDirection, filter }) => {
       color: '#373737',
       borderRadius: '20px',
       placeholderColor: 'red',
+      zIndex: 6000,
     }),
     control: provided => ({
       ...provided,
@@ -32,7 +33,7 @@ const DropDownMenu = ({ onChange, flexDirection, filter }) => {
       border: 0,
       cursor: 'pointer',
       borderColor: 'transparent',
-     
+
       color: '#red',
     }),
     option: (provided, { isFocused }) => ({
@@ -49,6 +50,7 @@ const DropDownMenu = ({ onChange, flexDirection, filter }) => {
       background:
         'linear-gradient(115deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%)',
       borderRadius: 20,
+      zIndex: 6000,
     }),
     singleValue: provided => ({
       ...provided,
