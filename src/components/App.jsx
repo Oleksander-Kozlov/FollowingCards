@@ -1,11 +1,9 @@
-
-import {  Navigate, Route, Routes } from 'react-router-dom';
-import { GlobalStyle } from "./GlobalStyled/global.styled.js";
-import SharedLayout from './FollowButton/SharedLayout/SharedLayout.jsx';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { GlobalStyle } from './GlobalStyled/global.styled.js';
+import SharedLayout from './SharedLayout/SharedLayout.jsx';
 import { HomePage } from 'pages/HomePage/HomePage.jsx';
 import { TweetsPage } from 'pages/TweetsPage/TweetsPage.jsx';
 export const App = () => {
-  
   return (
     <>
       <Routes>
@@ -20,13 +18,3 @@ export const App = () => {
     </>
   );
 };
-
-
-
-
-
-
-  
-
-   
-

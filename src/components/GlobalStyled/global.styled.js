@@ -2,8 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 import Montserrat500 from '../../assets/fonts/Montserrat-Medium.ttf';
 import Montserrat600 from '../../assets/fonts/Montserrat-SemiBold.ttf';
 
-
-
 export const GlobalStyle = createGlobalStyle`
 html {
   /* dark theme
@@ -63,6 +61,12 @@ body {
   /* background-color: var(--background-color); */
   background-color: var(--bg-color-main-darktheme);
   scroll-behavior: smooth;
+
+
+
+
+
+
 }
 
 section {

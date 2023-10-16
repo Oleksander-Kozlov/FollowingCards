@@ -1,9 +1,10 @@
 import { FollowButton, NavLink } from "components/UserCards/UserCards.styled"
+import { HomePageWrapper } from "./HomePage.styled";
 
 
 export const HomePage = () => {
     return (
-      <div
+      <HomePageWrapper
         style={{
           display: 'flex',
           'flexDirection': 'column',
@@ -15,6 +16,7 @@ export const HomePage = () => {
         <h1
           style={{
             padding: '100px',
+            
           }}
         >
           You welcome 🥳
@@ -22,6 +24,6 @@ export const HomePage = () => {
         <NavLink to="/tweets">
           <FollowButton>Lets tweets</FollowButton>
         </NavLink>
-      </div>
+      </HomePageWrapper>
     );
 }

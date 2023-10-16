@@ -6,13 +6,13 @@ export const Loader = () => {
       visible={true}
       height="380"
       width="380"
-      
+      color="#FF0000"
       ariaLabel="comment-loading"
       wrapperStyle={{
         marginTop: '40px',
         marginBottom: '40px',
-        width: "50vw",
-        height:"50vh",
+        width: '50vw',
+        height: '50vh',
       }}
       wrapperClass="comment-wrapper"
       backgroundColor="#F3F3F3"
