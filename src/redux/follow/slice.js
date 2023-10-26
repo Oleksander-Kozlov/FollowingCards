@@ -22,7 +22,7 @@ const followSlice = createSlice({
       state.isLoading = true;
     },
     [fetchUsersCards.fulfilled](state, action) {
-      state.cards.push(...action.payload);
+      state.cards = action.payload;
      
       state.isLoading = false;
     },

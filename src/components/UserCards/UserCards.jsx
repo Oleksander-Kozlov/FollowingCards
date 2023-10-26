@@ -4,7 +4,10 @@ import { useEffect } from 'react';
 
 import { useState } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  useDispatch,
+  useSelector
+} from 'react-redux';
 import { fetchUsersCards } from 'redux/follow/operations.js';
 import { selectIsLoading, selectUsers } from 'redux/follow/selector.js';
 import { FollowCard } from 'components/FollowCard/FollowCard.jsx';
@@ -15,18 +18,24 @@ import { BackLink } from 'components/BackLink.jsx';
 
 
 const UserCards = () => {
-  const [page, setPage] = useState(1);
+  const [pagination, setPagination] = useState(3);
   const [fil, setfil] = useState('showall');
   const dispatch = useDispatch();
   const data = useSelector(selectUsers);
   const Loading = useSelector(selectIsLoading);
-
+console.log('====================================');
+console.log(data);
+console.log('====================================');
   const filteredData = option => {
     setfil(option);
   };
-  let pagination = page * 3;
+  // let pagination = page * 3;
 
   let superData = data.slice(0, pagination);
+
+  console.log('====================================');
+  console.log(superData);
+  console.log('====================================');
   const newData = superData.filter(user => {
     if (fil === 'showall') {
       return user;
@@ -35,11 +44,11 @@ const UserCards = () => {
   });
 
   useEffect(() => {
-    dispatch(fetchUsersCards(page));
-  }, [dispatch, page]);
+    dispatch(fetchUsersCards());
+  }, [dispatch]);
 
   const handleLoadMore = () => {
-    setPage(page + 1);
+    setPagination(prevPagination => prevPagination + 3);
   };
 
   return (
@@ -60,7 +69,7 @@ const UserCards = () => {
             ))}
           </Ul>
 
-          {superData.length !== 12 && (
+          {data.length !== superData.length && (
             <FollowButton type="button" onClick={handleLoadMore}>
               Load More
             </FollowButton>
