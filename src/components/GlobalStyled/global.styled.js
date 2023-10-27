@@ -107,6 +107,7 @@ img {
 button {
   cursor: pointer;
   color: inherit;
+  border: none;
 }
 
 .error-message {
