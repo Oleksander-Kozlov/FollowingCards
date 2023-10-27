@@ -2,7 +2,7 @@
 // import { selectFollowers } from "redux/follow/selector";
 
 const { ButtonAddRemove } = require("components/FollowButton/FollowButton")
-const { AvatarWrapper, Avatar, MidleLine, FollowBox, Tweets } = require("components/UserCards/UserCards.styled")
+const { AvatarWrapper, Avatar,  FollowBox, Tweets } = require("components/UserCards/UserCards.styled")
 
 export const FollowCard = ({ item }) => {
   const { avatar, id, user, tweets, isFollow, followers } = item;
@@ -19,7 +19,7 @@ export const FollowCard = ({ item }) => {
             height={'80px'}
           />
         </AvatarWrapper>
-        <MidleLine></MidleLine>
+        {/* <MidleLine></MidleLine> */}
         <FollowBox>
           <Tweets>{tweets} tweets</Tweets>
           <Tweets> {formattedFollowers} Followers</Tweets>
