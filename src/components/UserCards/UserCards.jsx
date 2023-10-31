@@ -26,7 +26,7 @@ const UserCards = () => {
   const data = useSelector(selectUsers);
   const Loading = useSelector(selectIsLoading);
 console.log('====================================');
-console.log(data);
+console.log('data', data);
 console.log('====================================');
   const filteredData = option => {
     setfil(option);
@@ -36,15 +36,20 @@ console.log('====================================');
   let superData = data.slice(0, pagination);
 
   console.log('====================================');
-  console.log(superData);
+  console.log('superData', superData);
   console.log('====================================');
   const newData = superData.filter(user => {
     if (fil === 'showall') {
       return user;
     }
-    return user.isFollow === fil;
+    if (fil === 'following') {
+      return user.isFollow === true;
+    }
+    return user.isFollow === false;
   });
-
+  console.log('====================================');
+  console.log('newData', newData);
+  console.log('====================================');
   useEffect(() => {
     dispatch(fetchUsersCards());
   }, [dispatch]);

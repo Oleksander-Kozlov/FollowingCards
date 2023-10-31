@@ -1,14 +1,30 @@
-import { useState } from 'react';
+import {
+  // useEffect,
+  useState
+} from 'react';
 import Select from 'react-select';
 // import styled from 'styled-components';
 
 const DropDownMenu = ({ onChange, flexDirection, filter }) => {
   const optionValue = [
-    { value: true, label: 'following' },
-    { value: false, label: 'follow' },
+    { value: 'following', label: 'following' },
+    { value: 'follow', label: 'follow' },
     { value: 'showall', label: 'show All' },
   ];
   const [isOpen, setIsOpen] = useState(false);
+  
+  const storedValue = localStorage.getItem('selected');
+  const [selectedValue, setSelectedValue] = useState(
+    storedValue ? JSON.parse(storedValue) : null
+  );
+
+ const handleOnChange = selectedOption => {
+   const selectedValue = selectedOption.value;
+   setSelectedValue(selectedValue);
+   localStorage.setItem('selected', JSON.stringify(selectedValue));
+   filter(selectedValue); // Вызов вашей функции обратного вызова
+ };
+  
 
   const customStyles = {
     valueContainer: provided => ({
@@ -22,6 +38,7 @@ const DropDownMenu = ({ onChange, flexDirection, filter }) => {
       color: '#373737',
       borderRadius: '20px',
       placeholderColor: 'red',
+
       zIndex: 6000,
     }),
     control: provided => ({
@@ -40,6 +57,7 @@ const DropDownMenu = ({ onChange, flexDirection, filter }) => {
       ...provided,
       background:
         'linear-gradient(115deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%)',
+
       borderRadius: 20,
       color: isFocused ? 'rgba(235, 216, 255, 1)' : 'yellow',
       display: 'flex',
@@ -47,6 +65,7 @@ const DropDownMenu = ({ onChange, flexDirection, filter }) => {
     }),
     menu: provided => ({
       ...provided,
+
       background:
         'linear-gradient(115deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%)',
       borderRadius: 20,
@@ -70,6 +89,7 @@ const DropDownMenu = ({ onChange, flexDirection, filter }) => {
         color: '#yellow',
       },
       transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+      
     }),
     indicatorSeparator: provided => ({
       ...provided,
@@ -84,12 +104,9 @@ const DropDownMenu = ({ onChange, flexDirection, filter }) => {
     <div style={selectContainer}>
       <Select
         options={optionValue}
-        placeholder="select type of cards"
-        
+        placeholder={selectedValue || 'select type of cards'}
         styles={{ ...customStyles }}
-        onChange={selectedOption => {
-                   filter(selectedOption.value);
-        }}
+        onChange={handleOnChange}
         onMenuOpen={() => setIsOpen(true)}
         onMenuClose={() => setIsOpen(false)}
       />
