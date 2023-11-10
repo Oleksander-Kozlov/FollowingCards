@@ -21,35 +21,27 @@ import logo2x from '../../assets/img/logo@2x.png';
 
 const UserCards = () => {
   const [pagination, setPagination] = useState(3);
-  const [fil, setfil] = useState('showall');
+  const [fil, setfil] = useState();
   const dispatch = useDispatch();
   const data = useSelector(selectUsers);
   const Loading = useSelector(selectIsLoading);
-console.log('====================================');
-console.log('data', data);
-console.log('====================================');
+
   const filteredData = option => {
     setfil(option);
+    
   };
-  // let pagination = page * 3;
 
-  let superData = data.slice(0, pagination);
-
-  console.log('====================================');
-  console.log('superData', superData);
-  console.log('====================================');
-  const newData = superData.filter(user => {
-    if (fil === 'showall') {
-      return user;
+  const newData = data.filter(user => {
+    if (fil === 'follow') {
+      return user.isFollow === false;
     }
     if (fil === 'following') {
       return user.isFollow === true;
     }
-    return user.isFollow === false;
+    return user;
   });
-  console.log('====================================');
-  console.log('newData', newData);
-  console.log('====================================');
+  let superData = newData.slice(0, pagination);
+
   useEffect(() => {
     dispatch(fetchUsersCards());
   }, [dispatch]);
@@ -69,7 +61,7 @@ console.log('====================================');
             <DropDownMenu filter={filteredData} />
           </LinkSelectWrapper>
           <Ul>
-            {newData.map(item => (
+            {superData.map(item => (
               <CardWrapper key={item.id}>
                 <Logo
                   srcSet={`${logo1x} 1x, ${logo2x} 2x`}

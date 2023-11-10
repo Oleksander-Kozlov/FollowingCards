@@ -6,32 +6,45 @@ import Select from 'react-select';
 // import styled from 'styled-components';
 
 const DropDownMenu = ({ onChange, flexDirection, filter }) => {
-  const optionValue = [
-    { value: 'following', label: 'following' },
-    { value: 'follow', label: 'follow' },
-    { value: 'showall', label: 'show All' },
+  const options = [
+    { value: 'following', label: 'Following' },
+    { value: 'follow', label: 'Follow' },
+    { value: 'all', label: 'Show all' },    
   ];
+  
   const [isOpen, setIsOpen] = useState(false);
   
-  const storedValue = localStorage.getItem('selected');
+  const storedOption = JSON.parse(localStorage.getItem('selected'))||null;
   const [selectedValue, setSelectedValue] = useState(
-    storedValue ? JSON.parse(storedValue) : null
+    storedOption ? storedOption.value : 'all'
+  );
+  const [selectedLabel, setSelectedLabel] = useState(
+    storedOption? storedOption.label : 'Show all' 
   );
 
- const handleOnChange = selectedOption => {
-   const selectedValue = selectedOption.value;
-   setSelectedValue(selectedValue);
-   localStorage.setItem('selected', JSON.stringify(selectedValue));
-   filter(selectedValue); // Вызов вашей функции обратного вызова
+  const getValue = () => {
+    filter(selectedValue)
+    return selectedValue ?? options.find(item => item.value === selectedValue)
+  }
+  const getLabel = () => {
+    return selectedLabel ?? options.find(item => item.label === selectedLabel);
+  };
+
+  const handleOnChange = selectedOption => {
+    const value = selectedOption.value;   
+    const label = selectedOption.label;
+    setSelectedValue(value);
+    setSelectedLabel(label)
+   localStorage.setItem('selected', JSON.stringify(selectedOption));
+   filter(value);
+  
  };
   
-
-  const customStyles = {
+  
+const customStyles = {
     valueContainer: provided => ({
       ...provided,
-      // display: 'flex',
-      // flexDirection: 'column',
-      // alignItems: 'center',
+     
       paddingLeft: 18,
       background:
         'linear-gradient(115deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%)',
@@ -103,8 +116,10 @@ const DropDownMenu = ({ onChange, flexDirection, filter }) => {
   return (
     <div style={selectContainer}>
       <Select
-        options={optionValue}
-        placeholder={selectedValue || 'select type of cards'}
+        options={options}
+        value={getValue()}
+        placeholder={getLabel()}
+        
         styles={{ ...customStyles }}
         onChange={handleOnChange}
         onMenuOpen={() => setIsOpen(true)}
